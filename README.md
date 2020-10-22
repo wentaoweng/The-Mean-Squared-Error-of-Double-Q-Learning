@@ -111,7 +111,26 @@ File:
 
 Dependence
 1. OpenAI Gym
-2. PyTorch
+2. PyTorch 1.6.0
+
+bias.py is the code for a tabular setting and $M=8$, and bias(nn).py is the code for a setting with neural networks and $M=10^9$. They are basically the same, so we focus on bias(nn).py in the followings.
+
+To run experiments: python bias(nn).py
+
+Change self.policy, self.twofold, self.avg on line 59 in the code to test:
+
+1. Q-learning: self.policy = 'Q', self.twofold=0, self.avg = False
+2. Double Q-learning: self.policy = 'D-Q', self.twofold=0, self.avg = False
+3. Double Q-learning with twice the step size: self.policy = 'D-Q', self.twofold=1, self.avg = False
+4. Double Q-learning with twice tep step size and averaged estimator: self.policy = 'D-Q', self.twofold=1, self.avg = True
+
+It generates a file ProbLeft-Q (or ProbLeft-D-Q, ProbLeft-D-Q-twice, ProbLeft-D-Q-twice-average):
+
+contains a 1000*200 vectors (readable using numpy.load): 
+
+the element on the i-th row and j-th column is the probability of a left action for the first j-th episode in the i-th test 
+
+To plot the convergence of probability to go to the left, run python plot.py
 
    
 
