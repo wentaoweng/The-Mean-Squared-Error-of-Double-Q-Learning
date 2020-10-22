@@ -214,7 +214,6 @@ class BiasLarge():
                 if e % 20 == 0:
                     print("Running: " + filename)
                     print("Iteration, Episode", j, e)
-                    print("Running: MeanSquareError latest estimate is :", n_left / (e + 1))
 
             if (j + 1) % 50 == 0: #save file 
                 print("Save at iteration: ", j)
